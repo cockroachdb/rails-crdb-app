@@ -1,0 +1,17 @@
+default: &default
+  adapter: cockroachdb
+  host: <%= Rails.application.credentials.dig(:cockroachdb, :host) %>
+  port: 26257
+  user: <%= Rails.application.credentials.dig(:cockroachdb, :user) %>
+  password: <%= Rails.application.credentials.dig(:cockroachdb, :password) %>
+  database: <%= Rails.application.credentials.dig(:cockroachdb, :database) %>
+  sslmode: 'verify-full'
+  sslrootcert: './root.crt'
+  options: "--cluster=modest-weredog-3142"
+ 
+development:
+  <<: *default
+ 
+production:
+  <<: *default
+
