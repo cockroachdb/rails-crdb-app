@@ -1,0 +1,566 @@
+Started GET "/" for ::1 at 2022-06-28 11:29:43 -0400
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/rainleander/.rbenv/versions/3.0.3/lib/ruby/gems/3.0.0/gems/railties-6.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/rainleander/.rbenv/versions/3.0.3/lib/ruby/gems/3.0.0/gems/railties-6.1.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.9ms | Allocations: 609)
+Completed 200 OK in 26ms (Views: 13.1ms | ActiveRecord: 0.0ms | Allocations: 7509)
+
+
+Started GET "/" for ::1 at 2022-06-28 14:26:06 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/rainleander/.rbenv/versions/3.0.3/lib/ruby/gems/3.0.0/gems/railties-6.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/rainleander/.rbenv/versions/3.0.3/lib/ruby/gems/3.0.0/gems/railties-6.1.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.6ms | Allocations: 501)
+Completed 200 OK in 17ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 6352)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220628182924)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220628182924"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-06-28 18:29:44.159617"], ["updated_at", "2022-06-28 18:29:44.159617"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUsernameToUser (20220628183004)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","created_at","updated_at")
+                     SELECT "id","created_at","updated_at" FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "username" varchar NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "users" ("id","created_at","updated_at")
+                     SELECT "id","created_at","updated_at" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220628183004"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddScoreToUser (20220628183134)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "score" integer DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220628183134"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/new" for ::1 at 2022-06-28 14:33:24 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 17.7ms | Allocations: 5090)
+  Rendered users/new.html.erb within layouts/application (Duration: 18.8ms | Allocations: 5786)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/rainleander/game-leaderboard/public/packs
+[Webpacker] warning ../package.json: No license field
+
+[Webpacker] Hash: 4e86e05d5dbda31c6c86
+Version: webpack 4.46.0
+Time: 1191ms
+Built at: 06/28/2022 2:33:32 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-7f041c57215f4c597b08.js    121 KiB  application  [emitted] [immutable]  application
+js/application-7f041c57215f4c597b08.js.map    136 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-7f041c57215f4c597b08.js js/application-7f041c57215f4c597b08.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 8712.9ms | Allocations: 23907)
+Completed 200 OK in 8730ms (Views: 8715.5ms | ActiveRecord: 0.5ms | Allocations: 33942)
+
+
+Started GET "/users" for ::1 at 2022-06-28 14:36:37 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1640)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 8237)
+Completed 200 OK in 26ms (Views: 15.8ms | ActiveRecord: 0.2ms | Allocations: 12634)
+
+
+Started GET "/users/new" for ::1 at 2022-06-28 14:36:42 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 7.8ms | Allocations: 3228)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.0ms | Allocations: 3759)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 7390)
+Completed 200 OK in 21ms (Views: 14.7ms | ActiveRecord: 0.5ms | Allocations: 11294)
+
+
+Started POST "/users" for ::1 at 2022-06-28 14:36:47 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"TestUser", "score"=>"999"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "score") VALUES (?, ?, ?, ?)[0m  [["created_at", "2022-06-28 18:36:47.410739"], ["updated_at", "2022-06-28 18:36:47.410739"], ["username", "TestUser"], ["score", 999]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 8ms (ActiveRecord: 1.9ms | Allocations: 3548)
+
+
+Started GET "/users/1" for ::1 at 2022-06-28 14:36:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 320)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 3967)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 6032)
+
+
+Started GET "/users" for ::1 at 2022-06-28 14:36:49 -0400
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 4572)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.2ms | Allocations: 5122)
+
+
+Started GET "/users/new" for ::1 at 2022-06-28 14:36:50 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.3ms | Allocations: 955)
+  Rendered users/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1083)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 5084)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 5590)
+
+
+Started POST "/users" for ::1 at 2022-06-28 14:36:57 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"AnotherTestUser", "score"=>"99"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "score") VALUES (?, ?, ?, ?)[0m  [["created_at", "2022-06-28 18:36:57.559004"], ["updated_at", "2022-06-28 18:36:57.559004"], ["username", "AnotherTestUser"], ["score", 99]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms | Allocations: 2685)
+
+
+Started GET "/users/2" for ::1 at 2022-06-28 14:36:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 123)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3612)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.1ms | Allocations: 4650)
+
+
+Started GET "/users" for ::1 at 2022-06-28 14:36:58 -0400
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1112)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 4724)
+Completed 200 OK in 21ms (Views: 20.7ms | ActiveRecord: 0.2ms | Allocations: 5632)
+
+
+Started GET "/users/new" for ::1 at 2022-06-28 14:36:59 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.9ms | Allocations: 887)
+  Rendered users/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1016)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4608)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 5097)
+
+
+Started POST "/users" for ::1 at 2022-06-28 14:37:09 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"YetAnotherTestUser", "score"=>"9"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "score") VALUES (?, ?, ?, ?)[0m  [["created_at", "2022-06-28 18:37:09.043047"], ["updated_at", "2022-06-28 18:37:09.043047"], ["username", "YetAnotherTestUser"], ["score", 9]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms | Allocations: 2589)
+
+
+Started GET "/users/3" for ::1 at 2022-06-28 14:37:09 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 123)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3612)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.1ms | Allocations: 4650)
+
+
+Started GET "/users" for ::1 at 2022-06-28 14:37:10 -0400
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1232)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 4853)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.2ms | Allocations: 5347)
+
+
+Started GET "/users" for ::1 at 2022-06-28 14:59:01 -0400
+  
+ActiveRecord::NoDatabaseError (PG::InvalidCatalogName: ERROR:  database "modest-weredog-3142" does not exist
+):
+  
+activerecord-cockroachdb-adapter (6.1.10) lib/active_record/connection_adapters/cockroachdb_adapter.rb:54:in `rescue in cockroachdb_connection'
+activerecord-cockroachdb-adapter (6.1.10) lib/active_record/connection_adapters/cockroachdb_adapter.rb:30:in `cockroachdb_connection'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.6) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.6) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.6) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.6) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.6) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.6) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.6) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.6) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.6) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.2) lib/rack/proxy.rb:67:in `call'
+railties (6.1.6) lib/rails/engine.rb:539:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (25.5ms)[0m  [1m[35mSHOW crdb_version[0m
+  [1m[35m (23.6ms)[0m  [1m[34mSELECT crdb_internal.increment_feature_counter('ActiveRecord 6.1')[0m
+  [1m[35m (23.1ms)[0m  [1m[34mSELECT crdb_internal.increment_feature_counter('activerecord-cockroachdb-adapter 6.1.10')[0m
+  [1m[35m (25.3ms)[0m  [1m[35mSHOW crdb_version[0m
+  [1m[35m (24.9ms)[0m  [1m[34mSELECT crdb_internal.increment_feature_counter('ActiveRecord 6.1')[0m
+  [1m[35m (25.3ms)[0m  [1m[34mSELECT crdb_internal.increment_feature_counter('activerecord-cockroachdb-adapter 6.1.10')[0m
+Started GET "/users" for ::1 at 2022-06-28 15:07:41 -0400
+  [1m[35m (24.7ms)[0m  [1m[35mSHOW crdb_version[0m
+  [1m[35m (45.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (36.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (36.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 3 pending migrations:
+
+20220628182924_create_users.rb
+20220628183004_add_username_to_user.rb
+20220628183134_add_score_to_user.rb
+
+
+):
+  
+activerecord (6.1.6) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.6) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.6) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.6) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.6) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.6) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.6) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.6) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.6) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.6) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.2) lib/rack/proxy.rb:67:in `call'
+railties (6.1.6) lib/rails/engine.rb:539:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/rails/actions" for ::1 at 2022-06-28 15:07:55 -0400
+  [1m[35m (26.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220628182924)
+  [1m[35m (38.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mTRANSACTION (23.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (26.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220628182924"]]
+  [1m[36mTRANSACTION (27.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUsernameToUser (20220628183004)
+  [1m[35m (302.1ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying NOT NULL[0m
+  [1m[36mTRANSACTION (23.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (25.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220628183004"]]
+  [1m[36mTRANSACTION (25.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddScoreToUser (20220628183134)
+  [1m[35m (320.8ms)[0m  [1m[35mALTER TABLE "users" ADD "score" int DEFAULT '0'[0m
+  [1m[36mTRANSACTION (23.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (25.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220628183134"]]
+  [1m[36mTRANSACTION (25.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (25.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (22.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (26.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-06-28 19:07:57.192849"], ["updated_at", "2022-06-28 19:07:57.192849"]]
+  [1m[36mTRANSACTION (27.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (25.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for ::1 at 2022-06-28 15:07:57 -0400
+  [1m[35m (25.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (26.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 29.1ms | Allocations: 1362)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.2ms | Allocations: 10397)
+Completed 200 OK in 53ms (Views: 19.1ms | ActiveRecord: 26.8ms | Allocations: 13835)
+
+
+Started GET "/users/new" for ::1 at 2022-06-28 15:08:01 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 5.9ms | Allocations: 3213)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 3661)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 7289)
+Completed 200 OK in 194ms (Views: 13.6ms | ActiveRecord: 148.3ms | Allocations: 12730)
+
+
+Started POST "/users" for ::1 at 2022-06-28 15:08:08 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"TestUser", "score"=>"999"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (22.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (26.7ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "score") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-06-28 19:08:08.725983"], ["updated_at", "2022-06-28 19:08:08.725983"], ["username", "TestUser"], ["score", 999]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (25.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users/774546682037927937
+Completed 302 Found in 121ms (ActiveRecord: 75.1ms | Allocations: 3203)
+
+
+Started GET "/users/774546682037927937" for ::1 at 2022-06-28 15:08:08 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"774546682037927937"}
+  [1m[36mUser Load (25.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 774546682037927937], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 270)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.1ms | Allocations: 3762)
+Completed 200 OK in 108ms (Views: 25.6ms | ActiveRecord: 25.5ms | Allocations: 5336)
+
+
+Started GET "/users" for ::1 at 2022-06-28 15:08:10 -0400
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (25.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 28.4ms | Allocations: 991)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 4480)
+Completed 200 OK in 61ms (Views: 9.7ms | ActiveRecord: 25.8ms | Allocations: 5166)
+
+
+Started GET "/users/new" for ::1 at 2022-06-28 15:08:11 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.5ms | Allocations: 912)
+  Rendered users/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1047)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4659)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 5517)
+
+
+Started POST "/users" for ::1 at 2022-06-28 15:08:19 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"TestUserTwo", "score"=>"99"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (22.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (27.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "score") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-06-28 19:08:19.879599"], ["updated_at", "2022-06-28 19:08:19.879599"], ["username", "TestUserTwo"], ["score", 99]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (26.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users/774546718577852417
+Completed 302 Found in 118ms (ActiveRecord: 76.9ms | Allocations: 2660)
+
+
+Started GET "/users/774546718577852417" for ::1 at 2022-06-28 15:08:19 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"774546718577852417"}
+  [1m[36mUser Load (25.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 774546718577852417], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3613)
+Completed 200 OK in 61ms (Views: 7.1ms | ActiveRecord: 25.5ms | Allocations: 4679)
+
+
+Started GET "/users" for ::1 at 2022-06-28 15:08:21 -0400
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (25.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 28.3ms | Allocations: 1083)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | Allocations: 4575)
+Completed 200 OK in 62ms (Views: 9.3ms | ActiveRecord: 25.6ms | Allocations: 5200)
+
+
+Started GET "/users/new" for ::1 at 2022-06-28 15:08:22 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.3ms | Allocations: 887)
+  Rendered users/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1029)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4630)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 5495)
+
+
+Started POST "/users" for ::1 at 2022-06-28 15:08:30 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"AnotherTestUser", "score"=>"9"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (23.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mUser Create (26.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username", "score") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-06-28 19:08:30.054109"], ["updated_at", "2022-06-28 19:08:30.054109"], ["username", "AnotherTestUser"], ["score", 9]]
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (25.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/users/774546751914967041
+Completed 302 Found in 107ms (ActiveRecord: 74.8ms | Allocations: 2658)
+
+
+Started GET "/users/774546751914967041" for ::1 at 2022-06-28 15:08:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"774546751914967041"}
+  [1m[36mUser Load (26.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 774546751914967041], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 3613)
+Completed 200 OK in 62ms (Views: 7.0ms | ActiveRecord: 26.6ms | Allocations: 4678)
+
+
+Started GET "/users" for ::1 at 2022-06-28 15:08:31 -0400
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (25.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY score DESC[0m
+  ↳ app/views/users/index.html.erb:12
+  Rendered users/index.html.erb within layouts/application (Duration: 28.1ms | Allocations: 1235)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | Allocations: 4724)
+Completed 200 OK in 60ms (Views: 8.5ms | ActiveRecord: 25.7ms | Allocations: 5352)
+
+
